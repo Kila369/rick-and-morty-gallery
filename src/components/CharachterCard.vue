@@ -17,7 +17,7 @@
                       <span>Dead</span>
                     </template>
                     <template v-else>
-                      <span class="w-[1rem] h-[1rem] mr-[6px] rounded-full bg-"></span>
+                      <span class="w-[1rem] h-[1rem] mr-[6px] rounded-full bg-darkGray"></span>
                       <span>Unknown</span>
                     </template>
                     <span>&nbsp- {{ charachter.species }}</span>
