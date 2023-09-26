@@ -6,10 +6,16 @@ const routes = [
   {
     path: "/",
     component: Home,
+    name: "home",
   },
   {
     path: "/about",
     component: About,
+    name: "about",
+  },
+  {
+    path: "/:catchAll(.*)*",
+    redirect: { name: "home" },
   },
 ];
 
