@@ -3,7 +3,7 @@
       <div class="grid 2xl:grid-cols-3 md:grid-cols-2 gap-5 py-[4.5rem] px-[3rem]">
         <CharachterCard v-for="charachter in charachters" :key="charachter.id" :charachter="charachter"></CharachterCard>
       </div>
-      <div v-if="loading" class=" text-6xl text-white">Loading...</div>
+      <div v-if="loading" class="text-center text-6xl text-white">Loading...</div>
       <div v-if="page-1 != 1" class="fixed top-[94%] right-[2%] sm:right-[0%] cursor-pointer bg-white w-[2rem] h-[2rem] rounded-full text-center " @click="scrollToTop">
         <i class="arrow up"></i>
       </div>

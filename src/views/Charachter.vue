@@ -2,15 +2,15 @@
     <!-- <div>
         RICK AND MORTY CHARACHTER {{ $route.params.id }}
     </div> -->
-    <div v-if="!error" class="flex sm:min-h-[70vh] px-[3rem] pt-[3rem]">
+    <div v-if="!error" class="flex flex-col sm:items-center lg:items-start lg:flex-row sm:min-h-[70vh] px-[3rem] pt-[3rem]">
         <div class="sm:w-[30%]" v-if="!loading">
-            <img :src="charachter.image" alt="Frankenstein's Monster" class="w-full h-full object-cover">  
+            <img :src="charachter.image" :alt="charachter.name" class="w-full h-full object-cover">  
         </div>
-        <div class="pl-[2rem] text-white w-[60%]">
+        <div class="pl-[2rem] text-white w-[60%]" v-if="!loading">
             <div>
-                <h1 class="font-black text-[3rem] m-0 p-0">{{charachter.name}}</h1>
+                <h1 class="font-black text-[3rem] m-0 p-0">{{ charachter.name }}</h1>
             </div>
-            <div class="flex">
+            <div class="flex flex-col sm:flex-row">
                 <div>
                     <div>
                         <p class="text-lightGray">Species: </p>
@@ -56,16 +56,15 @@
                         <p class="font-medium">{{ formatDate(charachter.created) }}</p>
                     </div>
                 </div>
-                <div class="pl-[10rem]">
-                    <p class=" text-lightGray font-bold">Episodes:</p>
-                    <div class="max-h-[50vh] overflow-y-scroll">
-                        <EpisodeLink v-for="episodeUrl in charachter.episode" :episodeUrl="episodeUrl" />
+                <div class="sm:pl-[10rem]">
+                    <p class=" text-lightGray font-bold">Episodes({{ charachter.episode.length }}): </p>
+                    <div class="sm:max-h-[50vh] sm:overflow-y-scroll">
+                        <EpisodeLink v-for="episodeUrl in charachter.episode" :episodeUrl="episodeUrl" :key="episodeUrl" />
                     </div>
                 </div>
             </div>
         </div>
     </div>  
-
 
     <div v-else class="text-white text-center text-7xl mt-32">
         There is no charachter with that id!
@@ -74,7 +73,7 @@
 
 <script>
     import getCharacter from '../api/getCharachter';
-    import EpisodeLink from '../components/EpisodeLink.vue';
+    import EpisodeLink from '@/components/EpisodeLink.vue';
 
     export default {
         name: "Charachter",
@@ -83,9 +82,9 @@
         },
         data(){
             return{
-            charachter: {},
-            loading: true,
-            error: false,
+                charachter: {},
+                loading: true,
+                error: false,
             }
         },
         async created(){

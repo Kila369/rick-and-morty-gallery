@@ -1,5 +1,7 @@
 <template>
-    <router-link v-if="!loading" to="" class="block hover:text-orange">{{ episode.episode }}: {{ episode.name }} - {{ episode.air_date }}</router-link>
+    <p v-if="!loading">
+        {{ episode.episode }}: {{ episode.name }} - {{ episode.air_date }}
+    </p>
 </template>
 
 <script>
@@ -15,8 +17,14 @@
             }
         },
         async created(){
-            this.episode = await getEpisode(this.episodeUrl);
+            this.episode = await getEpisode(this.episodeId);
             this.loading = false;
+        },
+        computed: {
+            episodeId(){
+                const urlArray = this.episodeUrl.split('/');
+                return urlArray[urlArray.length-1];
+            }
         }
     }
 </script>

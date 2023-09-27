@@ -36,7 +36,6 @@
 </template>
 
 <script>
-  import router from '../router'; 
     export default {
         name: "CharachterCard",
         props: ["charachter"],
@@ -47,7 +46,8 @@
           return new Intl.DateTimeFormat('default', {dateStyle: 'long', timeStyle: 'short'}).format(date);
           },
           handleClick(id){
-            router.push({ name: 'charachter', params: { id } }) // -> /user/eduardo
+            this.$router.push({ name: 'charachter', params: { id } })
+            
           }
         }
 }
