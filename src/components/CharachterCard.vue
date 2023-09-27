@@ -1,10 +1,10 @@
 <template>
     <article 
-          class="flex flex-col sm:flex-row bg-gray text-white sm:h-[220px] w-full rounded-lg overflow-hidden hover:border-2 hover:border-orange hover:shadow-lg hover:shadow-orange  cursor-pointer ">
+          class="flex flex-col sm:flex-row bg-gray text-white sm:h-[220px] w-full rounded-lg overflow-hidden hover:border-2 hover:border-orange hover:shadow-lg hover:shadow-orange  cursor-pointer" @click.prevent="handleClick(charachter.id)">
               <div class="sm:w-[40%]">
                 <img :src="charachter.image" alt="Frankenstein's Monster" class="w-full h-full object-cover">  
               </div>
-              <div class="p-[1rem] flex flex-col justify-between">
+              <div class="p-[1rem] flex flex-col justify-between w-[60%]">
                 <div>
                   <h1 class=" font-bold text-[1.5rem]">{{charachter.name}}</h1>
                   <span class="flex items-center font-medium">
@@ -36,15 +36,19 @@
 </template>
 
 <script>
+  import router from '../router'; 
     export default {
         name: "CharachterCard",
         props: ["charachter"],
         methods:{
-      formatDate(dateString) {
-        const date = new Date(dateString);
-        
-        return new Intl.DateTimeFormat('default', {dateStyle: 'long', timeStyle: 'short'}).format(date);
-      },
-    }
+          formatDate(dateString) {
+          const date = new Date(dateString);
+          
+          return new Intl.DateTimeFormat('default', {dateStyle: 'long', timeStyle: 'short'}).format(date);
+          },
+          handleClick(id){
+            router.push({ name: 'charachter', params: { id } }) // -> /user/eduardo
+          }
+        }
 }
 </script>

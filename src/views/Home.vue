@@ -54,7 +54,7 @@
       }
 
     },
-    mounted () {
+    created () {
       this.fetchCharachters();
     },    
   }

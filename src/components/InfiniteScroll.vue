@@ -14,6 +14,13 @@
             }
         }.bind(this))
         },
+        beforeUnmount(){
+            window.removeEventListener("scroll", async function(){
+            if(window.innerHeight + window.scrollY >= document.body.offsetHeight- 800 && !this.loading){
+            this.$emit("scrolled-to-bottom")
+            }
+        }.bind(this)) 
+        }
     }
 </script>
 
