@@ -29,7 +29,7 @@
                                     <span>Dead</span>
                                 </template>
                                 <template v-else>
-                                    <span class="w-[1rem] h-[1rem] mr-[6px] rounded-full bg-darkGray"></span>
+                                    <span class="w-[1rem] h-[1rem] mr-[6px] rounded-full bg-lightGray"></span>
                                     <span>Unknown</span>
                                 </template>
                             </span>
