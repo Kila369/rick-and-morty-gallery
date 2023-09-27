@@ -1,7 +1,7 @@
-const getCharacters = async (page) => {
+const getCharacters = async (page, name, status, gender) => {
   try {
     const res = await fetch(
-      `https://rickandmortyapi.com/api/character?page=${page}`
+      `https://rickandmortyapi.com/api/character?page=${page}&name=${name}&status=${status}&gender=${gender}`
     );
     return await res.json();
   } catch (e) {
